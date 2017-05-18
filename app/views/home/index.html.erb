@@ -1,0 +1,63 @@
+<div class="home container">
+  <div id="home" class="folded">
+    <div class="video">
+      <video autoplay="autoplay" loop="loop" muted="muted">
+        <source src="<%= video_path("incyde.mp4") %>" type="video/mp4"/>
+        <source src="<%= video_path("incyde.webm") %>" type="video/webm"/>
+      </video>
+    </div>
+    <div class="content">
+      <div class="ui center aligned page grid">
+        <h2 class="ui huge inverted header"><%= t('common.home.title') %></h2><a href="#more-info" class="ui inverted circular button unfold-button"><%= t('common.home.show_map') %></a>
+      </div>
+    </div>
+    <div class="more-info">
+      <div class="more-info-content">
+        <div class="ui page grid">
+          <h3><%= t('common.home.subtitle') %></h3>
+          <p>
+            <%= t('common.home.text1') %>
+          </p>
+          <h4><%= t('common.home.subtitle2') %></h4>
+          <h4><%= t('common.home.subtitle3') %></h4>
+          <p>
+            <%= t('common.home.text2') %>
+          </p>
+          <div>
+            <iframe src="https://www.google.com/maps/d/embed?mid=zG6f2TFaK0RM.kUQH_dQ-47W8" width="100%" height="500"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="searchbar" class="white ui center aligned segment">
+
+      <% if false # TMP-DEMO %>
+              <!--<form class="ui form">-->
+              <%= simple_form_for :search, url: business_incubators_path, method: :get, html: {class: "ui form"} do |f| %>
+                <div class="inline field">
+                  <label>Busca tu vivero</label>
+                  <div class="ui selection dropdown">
+                    <input type="hidden" name="province"/><i class="dropdown icon"></i>
+                    <div class="default text">Provincia</div>
+                    <div class="menu">
+                      <% Province.all.each do |city| %>
+                        <div data-value="<%= city.id %>" class="item"><%= city.name %></div>
+                      <% end %>
+                      <!--<div data-value="" class="item">Madrid</div>-->
+                      <!--<div data-value="" class="item">Barcelona</div>-->
+                    </div>
+                  </div><a href="" class="ui submit button">Buscar</a>
+                </div>
+              <% end %>
+      <!--</form>-->
+
+              <br/>
+      <% end %>
+
+      <!--Temporal-->
+      <%= render partial: "shared/filter_business_incubators", locals: {selected: nil} %>
+      <!--Temporal-->
+
+    </div>
+  </div>
+</div>

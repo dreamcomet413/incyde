@@ -1,0 +1,13 @@
+<div class="ui card">
+  <%= image_tag('oferta.png', class: 'company-offer') if company.offer_description.present? %>
+  <div class="item">
+    <div class="ui avatar image"><%= image_tag(company.avatar.url(:thumb)) %></div>
+    <div class="content"><%= link_to(company.name, company_path(company), class: "user-name ui small header") %>
+      <div class="meta">
+        <div class="user-position"><%= company.sector.try(:name) %></div>
+        <div class="user-location"><i class="icon marker"></i><%= company.city.try(:name) %></div>
+      </div>
+      <%= link_to(t('common.shared.send_message'), messages_path(to: company.id), class: "ui fluid small button") %>
+    </div>
+  </div>
+</div>

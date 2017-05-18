@@ -1,0 +1,14 @@
+en:
+  conference:
+    page:
+      empty_message: ~
+      active_from: ~
+      active_to: ~
+  activerecord:
+    attributes:
+      conference:
+        image: ~
+        name: ~
+        room: ~
+        start_at: ~
+        end_at: ~

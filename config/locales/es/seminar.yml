@@ -1,0 +1,17 @@
+es:
+  seminar:
+    page:
+      empty_message: "Actualmente no hay ningún seminario programado"
+  activerecord:
+    models:
+      seminar:
+        one: "Seminario"
+        other: "Seminarios"
+    attributes:
+      seminar:
+        author: "Autor"
+        image: "Foto"
+        name: "Nombre"
+        url: "Enlace"
+        start_at: "Fecha"
+        code: "Id del seminario"

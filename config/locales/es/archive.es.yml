@@ -1,0 +1,11 @@
+es:
+  archive:
+  activerecord:
+    models:
+      archive:
+        one: "Imagen"
+        other: "Imágenes"
+    attributes:
+      archive:
+        user: "Usuario"
+        upload: "Imagen"

@@ -1,0 +1,53 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  business_incubator_id: 
+  name: MyString
+  country_id: 
+  region_id: 
+  province_id: 
+  city_id: 
+  address: MyString
+  phone: MyString
+  fax: MyString
+  web: MyString
+  recipient_agency: MyString
+  managing_agency: MyString
+  contact_name: MyString
+  kind: 1
+  offices_count: MyString
+  industrial_unit_count: MyString
+  meeting_rooms_count: MyString
+  training_rooms_count: MyString
+  assembly_hall: false
+  parking: false
+  parking_count: MyString
+  preincubation_zone: false
+  video_surveillance: false
+  electronic_access: false
+
+two:
+  business_incubator_id: 
+  name: MyString
+  country_id: 
+  region_id: 
+  province_id: 
+  city_id: 
+  address: MyString
+  phone: MyString
+  fax: MyString
+  web: MyString
+  recipient_agency: MyString
+  managing_agency: MyString
+  contact_name: MyString
+  kind: 1
+  offices_count: MyString
+  industrial_unit_count: MyString
+  meeting_rooms_count: MyString
+  training_rooms_count: MyString
+  assembly_hall: false
+  parking: false
+  parking_count: MyString
+  preincubation_zone: false
+  video_surveillance: false
+  electronic_access: false

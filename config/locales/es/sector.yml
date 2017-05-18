@@ -1,0 +1,10 @@
+es:
+  sector:
+  activerecord:
+    models:
+      sector:
+        one: "Sector"
+        other: "Sectores"
+    attributes:
+      sector:
+        name: "Nombre"

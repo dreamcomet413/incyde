@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p>Hola,</p>
+    <p><%= @message.sender.name %> escribió:</p>
+    <blockquote>
+      <p>
+        <%= raw @message.body %>
+      </p>
+    </blockquote>
+    <p>Responde al mensaje desde la plataforma <%= link_to Rails.configuration.action_mailer.default_url_options[:host], messages_url(anchor: dom_id(@message.conversation)) %></p>
+    <% user = @message.recipients.find{ |p| p != @message.sender} %>
+    <% if user.multi_account? %>
+        <p>*Mensaje enviado al Vivero: <%= user.name %></p>
+    <% end%>
+  </body>
+</html>

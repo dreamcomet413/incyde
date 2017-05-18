@@ -1,0 +1,43 @@
+<div class="dark container">
+  <div class="ui page grid">
+    <div class="ui equal height row">
+      <div class="main ui eleven wide column">
+        <h1><%= t("article_category.names.#{@category_code}") %></h1>
+        <div id="news" class="ui cards masonry-grid">
+          <% if @articles.empty? %>
+            <p><%= t("article.index_empty")%></p>
+          <% else %>
+              <div class="masonry-grid-sizer"></div>
+              <% @articles.each do |article| %>
+                  <div class="masonry-grid-item">
+                    <%= link_to article_path(article), class: "news-item ui card" do %>
+                        <% if article.has_image? %>
+                            <div class="news img-container">
+                              <%= image_tag(article.get_image_url(:medium)) %>
+                            </div>
+                        <% end %>
+                        <div class="content">
+                          <h3 class="ui large header"><%= article.title %></h3>
+
+                          <div class="meta">
+                            <span class="date"><%= l(article.published_at.to_date) %></span>
+                            <span class="likes"><%= fa_icon('thumbs-o-up', text: "(#{article.content_likes.count})") if article.content_likes.count > 0 %></span>
+                          </div>
+                          <div class="description">
+                            <p>
+                              <%= article.description.html_safe %>
+                            </p>
+                            <div class="view_more"><%= t('common.shared.view_more') %></div>
+                          </div>
+                        </div>
+                    <% end %>
+                  </div>
+              <% end %>
+          <% end %>
+        </div>
+        <%= paginate(@articles) %>
+      </div>
+      <%= render "layouts/sidebar" %>
+    </div>
+  </div>
+</div>

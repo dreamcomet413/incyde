@@ -1,0 +1,10 @@
+es:
+  province:
+  activerecord:
+    models:
+      province:
+        one: "Provincia"
+        other: "provincias"
+    attributes:
+      province:
+        name: "Nombre"

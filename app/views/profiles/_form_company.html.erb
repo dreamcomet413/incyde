@@ -1,0 +1,45 @@
+<div class="primary ui vertical segment">
+  <div class="ui image avatar">
+    <%= image_tag(@user.avatar.url(:medium)) %>
+    <%= f.input :avatar %>
+  </div>
+  <div class="content">
+    <%= f.simple_fields_for @user.profile_class do |fp| %>
+        <%= fp.input :name %>
+        <!--<%= fp.input :incorporation_date %>-->
+        <%= fp.input :incorporation_date, as: :string, input_html: {type: :date} %>
+    <% end %>
+  </div>
+</div>
+
+<div class="ui vertical segment">
+  <div class="ui header">Publica tu oferta</div>
+  <%= f.simple_fields_for @user.profile_class do |fp| %>
+      <%= fp.input :offer_description %>
+  <% end %>
+  <div class="ui section divider"></div>
+  <div class="ui header">Datos de contacto</div>
+  <%= f.simple_fields_for @user.profile_class do |fp| %>
+      <%= fp.input :contact_name %>
+      <%= fp.input :contact_surname %>
+      <%= fp.input :land_phone %>
+      <%= fp.input :mobile_phone %>
+      <%= fp.input :fax %>
+      <%= fp.input :web %>
+  <% end %>
+  <div class="ui section divider"></div>
+  <div id='company_data' class="ui header">Datos de la empresa</div>
+  <%= f.simple_fields_for @user.profile_class do |fp| %>
+      <%= fp.input :cnae %>
+      <%= fp.input :workers_number %>
+      <%= fp.input :activity %>
+      <% unless @user.profile.legal_conditions %>
+          <div class="legal_warning">Es necesario aceptar las condiciones legales</div>
+          <%= fp.input :legal_conditions, label: "Acepto las #{link_to('condiciones de la plataforma', legal_conditions_static_pages_path, target: '_blank')}".html_safe %>
+      <% end %>
+  <% end %>
+  <div class="ui header">Cambiar contraseña</div>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+
+</div>

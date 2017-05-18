@@ -1,0 +1,58 @@
+- if current_user.is_a?(Admin)
+  %ul.recipients
+    -#%li
+      = form.object.recipient_ids
+    %li
+      = check_box_tag 'all_incubator'
+      %label{for: 'all_incubator'} Seleccionar todos los viveros
+    %li
+      = check_box_tag 'all_users'
+      %label{for: 'all_users'} Seleccionar todos
+    - BusinessIncubator.ordered.each do |incubator|
+      %li.incubator{id: dom_id(incubator)}
+        - id = "notification_platform_recipient_ids_#{incubator.id}"
+        - checked = form.object.recipient_ids.present? && form.object.recipient_ids.include?(incubator.id.to_s)
+        = check_box_tag "notification_platform[recipient_ids][]", incubator.id, checked, id: id
+        %label{for: id}= incubator.name
+        = "(#{incubator.companies.count})"
+        = link_to(fa_icon('expand'), '#', class: 'expand', 'data-incubator-id' => incubator.id) if incubator.companies.count > 0
+      - unless incubator.companies.empty?
+        %li
+          = render partial: 'rails_admin/main/notification_platform/recipients_companies', locals: {form: form, incubator: incubator}
+- elsif current_user.is_a?(BusinessIncubator)
+  = render partial: 'rails_admin/main/notification_platform/recipients_companies', locals: {form: form, incubator: current_user, for_incubator: true}
+
+
+:sass
+  .recipients
+    padding-top: 10px
+    height: 400px
+    overflow: auto
+    box-shadow: 0px 0px 2px 1px #eeeeee inset
+    label
+      font-weight: inherit
+    li
+      list-style: none
+    .companies_list
+      display: none
+
+:javascript
+  $('.recipients li.incubator a.expand').on('click', function(){
+    $('#companies_for_'+$(this).attr('data-incubator-id')).toggle();
+    $(this).find('i.fa').toggleClass('fa-expand');
+    $(this).find('i.fa').toggleClass('fa-compress');
+  })
+
+  $('.recipients input#all_incubator').on('change', function(){
+    $('.recipients li.incubator input').prop('checked', $(this).is(':checked'));
+  })
+
+  $('.recipients input#all_users').on('change', function(){
+    $('.recipients li.incubator input, .recipients li.company input').prop('checked', $(this).is(':checked'));
+  })
+
+  $('.recipients input#all_companies').on('change', function(){
+    $(this).parents('ul.companies_list').find('li.company input').prop('checked', $(this).is(':checked'));
+  })
+
+

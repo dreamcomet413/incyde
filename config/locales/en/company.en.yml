@@ -1,0 +1,17 @@
+en:
+  company:
+    page:
+      form:
+        text_placeholder: ~
+        activity_prompt: ~
+        province_prompt: ~
+  activerecord:
+    attributes:
+      company:
+        name: ~
+        email: ~
+        remember_me: ~
+        password: ~
+        password_confirmation: ~
+        current_password: ~
+        company_profile: ~

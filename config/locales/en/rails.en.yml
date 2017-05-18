@@ -1,0 +1,113 @@
+en:
+  date:
+    abbr_day_names: ~
+    abbr_month_names: ~
+    day_names: ~
+    formats:
+      default: ! '%d/%m/%Y'
+      long: ~
+      short: ~
+    month_names: ~
+    order:
+    - :month
+    - :day
+    - :year
+  datetime:
+    distance_in_words:
+      half_a_minute: ~
+    prompts:
+      day: ~
+      hour: ~
+      minute: ~
+      month: ~
+      second: ~
+      year: ~
+  errors:
+    format: ~
+    messages:
+      accepted: ~
+      blank: ~
+      confirmation: ~
+      empty: ~
+      equal_to: ~
+      even: ~
+      exclusion: ~
+      greater_than: ~
+      greater_than_or_equal_to: ~
+      inclusion: ~
+      invalid: ~
+      less_than: ~
+      less_than_or_equal_to: ~
+      not_a_number: ~
+      not_an_integer: ~
+      odd: ~
+      record_invalid: ~
+      taken: ~
+      too_long: ~
+      too_short: ~
+      wrong_length: ~
+    template:
+      body: ~
+  helpers:
+    select:
+      prompt: ~
+    submit:
+      create: ~
+      submit: ~
+      update: ~
+  number:
+    currency:
+      format:
+        delimiter: ~
+        format: ~
+        precision: ~
+        separator: ~
+        significant: ~
+        strip_insignificant_zeros: ~
+        unit: ~
+    format:
+      delimiter: ~
+      precision: ~
+      separator: ~
+      significant: ~
+      strip_insignificant_zeros: ~
+    human:
+      decimal_units:
+        format: ~
+        units:
+          billion: ~
+          million: ~
+          quadrillion: ~
+          thousand: ~
+          trillion: ~
+          unit: ~
+      format:
+        delimiter: ~
+        precision: ~
+        significant: ~
+        strip_insignificant_zeros: ~
+      storage_units:
+        format: ~
+        units:
+          gb: ~
+          kb: ~
+          mb: ~
+          tb: ~
+    percentage:
+      format:
+        delimiter: ~
+    precision:
+      format:
+        delimiter: ~
+  support:
+    array:
+      last_word_connector: ~
+      two_words_connector: ~
+      words_connector: ~
+  time:
+    am: ~
+    formats:
+      default: ~
+      long: ~
+      short: ! '%d de %b %H:%M'
+    pm: ~

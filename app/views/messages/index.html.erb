@@ -1,0 +1,66 @@
+<div class="dark container">
+  <div class="ui page grid">
+    <div class="ui equal height row">
+      <div class="main ui eleven wide column">
+        <div class="menu options"><a id="new-message-button" href="#new-message" class="ui green button"><%= t('mailboxer.message_page.new_message') %></a></div>
+        <!--<div class="menu options">-->
+          <!--<select name="sort-by" class="ui dropdown">-->
+            <!--<option value="messages">Mensajes</option>-->
+            <!--<option value="contacts">Contactos</option>-->
+          <!--</select><a id="new-message-button" href="#new-message" class="ui right floated green button">Nuevo mensaje</a>-->
+        <!--</div>-->
+        <div id="messages">
+          <div id="new-message" class="ui segment">
+
+            <%= simple_form_for :message, url: messages_path, html: {class:""} do |f| %>
+                <!--<div class="field">-->
+                    <%= f.input :user_name, :url => autocomplete_user_name_messages_path, :as => :autocomplete, :id_element => '#message__recipients',
+                                label: false, placeholder: t('mailboxer.message_page.form.placeholder.to'), wrapper_html: {class: ""}, input_html: {value: @user.try(:name)} %>
+                <!--</div>-->
+                <div id="js_url_for_empty_results" style="display:none"><%= companies_path %></div>
+                <!--<div class="field">-->
+                  <%= f.input :_recipients, as: :hidden, label: false, input_html: {value: @user.try(:id)} %>
+                <!--</div>-->
+                <!--<div class="field">-->
+                    <%= f.input :subject, as: :search, label: false, placeholder: t('mailboxer.message_page.form.placeholder.subject'), wrapper_html: {class: ""} %>
+                <!--</div>-->
+                <%= f.input :body, as: :text, label: false, placeholder: t('mailboxer.message_page.form.placeholder.text'), wrapper_html: {class: ""} %>
+                <%= f.button :submit, "Enviar", class: "right floated green" %>
+                <!--<a href="#send" class="ui right floated green submit button">Enviar</a>-->
+                <a href="#cancel" class="ui right floated button"><%= t('common.shared.cancel') %></a>
+            <% end %>
+
+            <!--<form class="ui form">-->
+              <!--<div class="field">-->
+                <!--<div class="ui input">-->
+                  <!--<input type="search" name="recipient" placeholder="Para">-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div class="field">-->
+                <!--<div class="ui input">-->
+                  <!--<input type="search" name="subject" placeholder="Asunto">-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div class="field">-->
+                <!--<textarea placeholder="Escribe un mensaje" class="textarea"></textarea>-->
+              <!--</div><a href="#send" class="ui right floated green submit button">Enviar</a><a href="#cancel" class="ui right floated button">Cancelar</a>-->
+            <!--</form>-->
+
+          </div>
+
+          <div class="ui fluid accordion items">
+
+
+            <%= render partial: "messages/conversation", collection: @conversations %>
+            <%#= render partial: 'layouts/more',locals: {path: conversations_path,per_page: 9,total: @conversations.total_count} %>
+
+
+
+          </div>
+        </div>
+
+      </div>
+      <%= render "layouts/sidebar" %>
+    </div>
+  </div>
+</div>

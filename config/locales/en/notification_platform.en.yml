@@ -1,0 +1,8 @@
+en:
+  notification_platform: ~
+  activerecord:
+    attributes:
+      notification_platform:
+        subject: ~
+        body: ~
+        created_at: ~

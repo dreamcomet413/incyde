@@ -1,0 +1,57 @@
+<div id="profile" class="container">
+  <div class="ui page grid">
+    <div class="ui equal height row">
+      <div class="main ui eleven wide column">
+        <div class="primary ui vertical segment">
+          <div class="ui image"><%= image_tag(@company.avatar.url(:medium)) if @company.avatar? %></div>
+          <div class="content">
+            <div class="ui huge header"><%= @company.name %></div>
+            <div class="ui big header"><%= @company.sector.try(:name) %></div>
+          </div>
+        </div>
+        <div class="ui vertical segment">
+          <div class="ui items">
+            <div class="phone ui item">
+              <div class="label"><i class="large call icon"></i><span>Teléfono</span></div>
+              <div class="content"><span><%= @company.display_phones %></span></div>
+            </div>
+            <div class="email ui item">
+              <div class="label"><i class="large mail icon"></i><span>Correo electrónico</span></div>
+              <div class="content"><span><%= mail_to(@company.email, nil, target: "_blank") %></span></div>
+            </div>
+            <div class="address ui item">
+              <div class="label"><i class="large marker icon"></i><span>Dirección postal</span></div>
+              <div class="content">
+                <div class="address"><%= @company.address %></div>
+                <div class="postalcode"><%= @company.zip_code %></div>
+                <div class="province"><%= @company.city.try(:name) %></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui vertical segment">
+          <div class="ui items">
+            <div class="activity ui item">
+              <div class="label"><i class="large circle info icon"></i><span>Actividad</span></div>
+              <div class="content">
+                <p><%= @company.activity %></p>
+              </div>
+            </div>
+            <div class="website ui item">
+              <div class="label"><i class="large external link icon"></i><span>Página web</span></div>
+              <div class="content"><span><%= link_to(@company.web, url_with_protocol(@company.web), target: "_blank") if @company.web %></span></div>
+            </div>
+            <% if @company.offer_description.present? %>
+                <div class="offer ui item">
+                  <div class="label"><%= image_tag('oferta.png', class: 'company-offer', width: '70') %></div>
+                  <div class="content"><p><%= raw sanitize(@company.offer_description, tags: []).gsub("\n", "<br />") %></p></div>
+                </div>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+      <%= render "layouts/sidebar" %>
+    </div>
+  </div>
+</div>

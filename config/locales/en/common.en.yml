@@ -1,0 +1,50 @@
+en:
+  common:
+    time:
+      ago: "%{time} Ago"
+    shared:
+      send: Send
+      send_message: "Send message"
+      search: Search
+      cancel: Cancel
+    layout:
+      title: "Fundacion Incyde"
+      menu:
+        business_incubators: "Incubator network"
+        articles: News
+        messages: Messages
+        companies: Contacts
+        conferences: Conferences
+        seminars: Seminars
+      user_menu:
+        profile: Profile
+        admin: Admin
+        logout: "Log out"
+        login: Login
+      footer:
+        privacy: "Privacy policy"
+        cookies: "Cookies policy"
+        change_language: "Español"
+    home:
+      title: "Fundacion Incyde Incubators network"
+      show_map: Map
+      subtitle: "About us"
+      text1: ~
+      subtitle2: ~
+      subtitle3: ~
+      text2: ~
+      search_form:
+        title: ~
+        prompt: ~
+        button: ~
+    sidebar:
+      events: ~
+      seminars: ~
+
+  views:
+    pagination:
+      first: "&laquo; First"
+      last: "Last &raquo;"
+      previous: "&#8592;"
+      next: "&#8594;"
+      truncate: "&hellip;"

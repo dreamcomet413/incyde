@@ -1,0 +1,86 @@
+<div id="profile" class="container">
+  <div class="ui page grid">
+    <div class="ui equal height row">
+      <div class="main ui eleven wide column">
+        <div class="primary ui vertical segment">
+          <div class="ui image avatar">
+            <%= image_tag(@business_incubator.avatar.url(:medium)) if @business_incubator.avatar? %>
+            <!--<img src="img/avatar.png"/>-->
+          </div>
+          <div class="content">
+            <div class="ui huge header"><%= @business_incubator.name %></div>
+            <div class="ui items">
+              <% unless @business_incubator.web.blank? %>
+                  <div class="website ui item">
+                    <div class="label">
+                      <i class="large external link icon"></i>
+                      <span>Website</span>
+                    </div>
+                    <div class="content">
+                      <div class="url"><%= link_to(@business_incubator.web, url_with_protocol(@business_incubator.web), target: "_blank") if @business_incubator.web %></div>
+                    </div>
+                  </div>
+              <% end %>
+              <% if !@business_incubator.email.blank? && !@business_incubator.managed_account? %>
+                  <div class="email ui item">
+                    <div class="label">
+                      <i class="large mail icon"></i>
+                      <span>Email</span>
+                    </div>
+                    <div class="content">
+                      <div class="email"><%= mail_to(@business_incubator.email, nil, target: "_blank") %></div>
+                    </div>
+                  </div>
+              <% end %>
+              <div class="province ui item">
+                <div class="label">
+                  <i class="large marker icon"></i>
+                  <span>Provincia</span>
+                </div>
+                <div class="content">
+                  <div class="address"><%= @business_incubator.address %></div>
+                  <div class="postalcode"><%= @business_incubator.zip_code %></div>
+                  <div class="province"><%= @business_incubator.province.name %></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui vertical segment">
+          <div class="ui items">
+            <%= render partial: "attr_detail", locals: {object: @business_incubator, attr: "facebook_url"}%>
+            <%= render partial: "attr_detail", locals: {object: @business_incubator, attr: "twitter_url"}%>
+            <%= render partial: "attr_detail", locals: {object: @business_incubator, attr: "phone"}%>
+            <%= render partial: "attr_detail", locals: {object: @business_incubator, attr: "fax"}%>
+            <%#= render partial: "attr_detail", locals: {object: @business_incubator, attr: "recipient_agency", field_text: "recipient_agency"}%>
+            <%#= render partial: "attr_detail", locals: {object: @business_incubator, attr: "managing_agency", field_text: "managing_agency"}%>
+            <%= render partial: "attr_detail", locals: {object: @business_incubator, attr: "contact_name"}%>
+            <%= render partial: "attr_detail", locals: {object: @business_incubator, attr: "display_kind", field_text: "Tipo"}%>
+            <%= render partial: "attr_detail", locals: {object: @business_incubator, attr: "offices_count"}%>
+            <%= render partial: "attr_detail", locals: {object: @business_incubator, attr: "industrial_unit_count"}%>
+            <%= render partial: "attr_detail", locals: {object: @business_incubator, attr: "meeting_rooms_count"}%>
+            <%= render partial: "attr_detail", locals: {object: @business_incubator, attr: "training_rooms_count"}%>
+            <%= render partial: "attr_detail", locals: {object: @business_incubator, attr: "assembly_hall"}%>
+            <%= render partial: "attr_detail", locals: {object: @business_incubator, attr: "parking"}%>
+            <%= render partial: "attr_detail", locals: {object: @business_incubator, attr: "parking_count"}%>
+            <%= render partial: "attr_detail", locals: {object: @business_incubator, attr: "preincubation_zone"}%>
+            <%= render partial: "attr_detail", locals: {object: @business_incubator, attr: "video_surveillance"}%>
+            <%= render partial: "attr_detail", locals: {object: @business_incubator, attr: "electronic_access"}%>
+          </div>
+        </div>
+        <% unless @business_incubator.archives.empty? %>
+            <div class="gallery ui vertical grey segment">
+              <div class="ui small images">
+                <% images = ["/assets/placeholder-image.png", "/assets/placeholder-avatar.png", "/assets/placeholder-image.png", "/assets/placeholder-avatar.png"] %>
+                <% @business_incubator.archives.each do |archive| %>
+                    <%# image_file = image.gsub("/assets/", "") %>
+                    <%= link_to(image_tag(archive.upload.url(:thumb)), archive.upload.url(:medium), "data-lightbox" => "image", "data-title" => "#{archive.upload_file_name}") %>
+                <% end %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+      <%= render "layouts/sidebar" %>
+    </div>
+  </div>
+</div>

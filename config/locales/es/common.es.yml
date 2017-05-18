@@ -1,0 +1,55 @@
+es:
+  common:
+    time:
+      ago: "Hace %{time}"
+    shared:
+      send: "Enviar"
+      send_message: "Enviar mensaje"
+      search: "Buscar"
+      cancel: "Cancelar"
+      view_more: "Ver más"
+      like: "Me gusta"
+      unlike: "Ya no me gusta"
+    layout:
+      title: "Fundación Incyde"
+      menu:
+        business_incubators: "Red de viveros"
+        articles: "Noticias"
+        messages: "Mensajes"
+        companies: "Contactos"
+        conferences: "Conferencias"
+        seminars: "Seminarios"
+      user_menu:
+        profile: "Perfil"
+        admin: "Administración"
+        logout: "Salir"
+        login: "Entra"
+      footer:
+        privacy: "Política de privacidad"
+        cookies: "Política de cookies"
+        change_language: "English"
+    home:
+      title: "Red de viveros de la fundación INCYDE"
+      show_map: "Ver mapa"
+      subtitle: "¿Quiénes somos?"
+      text1: "La Fundación INCYDE (Instituto Cameral para la Creación y Desarrollo de la Empresa) es una institución creada en 1999 a iniciativa de las Cámaras de Comercio, dedicada al fomento y a la formación del espíritu emprendedor, a la mejora de la cualificación de los empresarios y a la creación y consolidación de las empresas."
+      subtitle2: "Dotación presupuestaria"
+      subtitle3: "Los últimos avances de la fundación incyde en materia de fondos feder"
+      text2: "Tras estos más de 14 años de gestión de Fondos, la Fundación no ha cesado de actualizarse y reciclarse, para posicionarse como un organismo líder en cuanto a la orientación de la Unión Europea. Para tal fin, es importante presentar y destacar los últimos avances que hemos venido realizando en los últimos años:"
+      search_form:
+        title: "Busca tu vivero"
+        prompt: "Provincia"
+        button: "Buscar"
+    sidebar:
+      nessmeeting_tutorial: "Ver tutorial de uso"
+      promotions: "Ofertas destacadas"
+      events: "Noticias destacadas"
+      seminars: "Seminarios Online"
+
+  views:
+    pagination:
+      first: "&laquo; Primero"
+      last: "Último &raquo;"
+      previous: "&#8592;"
+      next: "&#8594;"
+      truncate: "&hellip;"

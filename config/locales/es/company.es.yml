@@ -1,0 +1,21 @@
+es:
+  company:
+    page:
+      form:
+        text_placeholder: "Busca en Incyde"
+        activity_prompt: "Actividad"
+        province_prompt: "Provincia"
+  activerecord:
+    models:
+      company:
+        one: "Viverista"
+        other: "Viveristas"
+    attributes:
+      company:
+        name: "Nombre"
+        email: "Email"
+        remember_me: "Recordar"
+        password: "Contraseña"
+        password_confirmation: "Confirmar contraseña"
+        current_password: "Contraseña actual"
+        company_profile: "Resto de datos"

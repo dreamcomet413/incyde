@@ -1,0 +1,7 @@
+en:
+  city: ~
+  activerecord:
+    attributes:
+      city:
+        name: ~
+        province: ~

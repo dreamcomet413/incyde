@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    attributes:
+      admin:
+        name: ~
+        email: ~
+        password: ~
+        password_confirmation: ~
+        created_at: ~

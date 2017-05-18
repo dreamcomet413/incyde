@@ -1,0 +1,48 @@
+es:
+  business_incubator_profile:
+    kind:
+      servicios: "Servicios"
+      industrial: "Industrial"
+      coworking: "Coworking"
+      mixto: "Mixto"
+  activerecord:
+    models:
+      business_incubator_profile:
+        one: "Datos del Vivero"
+        other: "Viveros"
+    attributes:
+      business_incubator_profile:
+        name: "Nombre"
+        country: "País"
+        region: "Com. Autónoma"
+        province: "Provincia"
+        city: "Ciudad"
+        address: "Dirección"
+        zip_code: "Código postal"
+        phone: "Teléfono"
+        fax: "Fax"
+        web: "Web"
+        facebook_url: "Perfil de Facebook"
+        twitter_url: "Perfil de Twitter"
+        recipient_agency: "Organismo Beneficiario"
+        managing_agency: "Organismo responsable de la gestión"
+        contact_name: "Persona de contacto"
+        kind: "Tipología del vivero"
+        display_kind: "Tipología del vivero"
+        offices_count: "Nº de oficinas/despachos"
+        industrial_unit_count: "Nº de naves industriales"
+        meeting_rooms_count: "Nº de salas de reuniones"
+        training_rooms_count: "Nº de salas de formación"
+        assembly_hall: "Salón de actos "
+        parking: "Aparcamiento"
+        parking_count: "Nº aparcamientos"
+        preincubation_zone: "Zona de preincubación"
+        video_surveillance: "Sistema de videovigilancia"
+        electronic_access: "Acceso electrónico"
+        XXX: "Medios tecnológicos"
+        XXX: "Vivero virtual"
+        XXX: "Ventanilla Única Empresarial (Punto PAIT)"
+        XXX: "Servicios de Valor Añadido que ofrece el vivero"
+
+
+

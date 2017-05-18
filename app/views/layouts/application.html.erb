@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title><%= t('common.layout.title') %></title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= body_class %>">
+
+<header>
+  <div class="ui page grid">
+    <div class="ui equal height row">
+      <div id="logos" class="ui five wide column">
+        <div class="ui horizontal very relaxed list">
+          <%=image_tag("logos_incyde.jpg" ) %>
+        </div>
+      </div>
+
+      <div class="eleven wide column">
+        <div class="login-data-box">
+          <% if signed_in? %>
+              <%= current_user.name %>
+              <%= link_to(t('common.layout.user_menu.profile'), edit_profile_path) unless current_user.is_a?(Admin) %>
+              <%= link_to(t('common.layout.user_menu.admin'), rails_admin_path) if can?(:access, :rails_admin) %>
+              <%#= link_to("Nessmeeting", nessmeeting_url(current_user.email), target: '_blank') %>
+              <%= link_to(t('common.layout.user_menu.logout'), destroy_user_session_path, method: :delete) %>
+          <% else %>
+              <%= link_to(t('common.layout.user_menu.login'), new_user_session_path, class: "no-separator") %>
+          <% end %>
+        </div>
+        <nav class="ui small menu">
+          <%= link_to(t('common.layout.menu.business_incubators'), business_incubators_path, class: "item") if can?(:index, BusinessIncubator) %>
+          <% if can?(:index, Article) %>
+              <div class="ui simple dropdown item">
+                <%= t('common.layout.menu.articles') %> <i class="dropdown icon"></i>
+
+                <div class="menu">
+                  <% @categories.each do |category| %>
+                      <%= link_to(category.name, category_articles_path(category: category.code), class: "item") %>
+                  <% end %>
+                </div>
+              </div>
+          <% end %>
+          <%= link_to(t('common.layout.menu.messages'), messages_path, class: "item") if can?(:index, Mailboxer::Conversation) %>
+          <%= link_to(t('common.layout.menu.companies'), companies_path, class: "item") if can?(:index, Company) %>
+          <%= link_to(t('common.layout.menu.conferences'), conferences_path, class: "item") if can?(:index, Conference) %>
+          <%= link_to(t('common.layout.menu.seminars'), seminars_path, class: "item") if can?(:index, Seminar) %>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<%= yield %>
+
+
+<footer class="ui footer segment">
+  <div class="links ui center aligned vertical segment">
+    <div class="ui inverted horizontal relaxed tiny link list">
+      <%= link_to(t('common.layout.footer.privacy'), legal_conditions_static_pages_path, class: 'item')%>
+      <%= link_to(t('common.layout.footer.cookies'), legal_conditions_static_pages_path, class: 'item') %>
+      <%= link_to(t('common.layout.footer.change_language'), root_path(locale: change_to_locale), class: 'item') %>
+    </div>
+  </div>
+  <div class="ui fitted divider"></div>
+  <% if false %>
+      <!--<div class="sponsors ui center aligned vertical segment">-->
+        <!--<div class="ui horizontal relaxed list">-->
+          <!--<%= link_to(image_tag("logo-ebn.png", class: "ui image"), "#", class: "ebn item") %>-->
+          <!--<%= link_to(image_tag("logo-eban.png", class: "ui image"), "#", class: "eban item") %>-->
+          <!--<%= link_to(image_tag("logo-cdti.png", class: "ui image"), "#", class: "cdti item") %>-->
+          <!--<%= link_to(image_tag("logo-redlac.png", class: "ui image"), "#", class: "redlac item") %>-->
+        <!--</div>-->
+      <!--</div>-->
+  <% end %>
+</footer>
+
+</body>
+</html>

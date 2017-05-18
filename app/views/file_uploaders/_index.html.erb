@@ -1,0 +1,6 @@
+<% archives.each do |archive| %>
+    <div id="<%= dom_id(archive) %>">
+        <%= link_to("x", file_uploader_path(archive), method: :delete, remote: true) %>
+        <%= image_tag archive.upload.url(:thumb), alt: archive.upload.url(:thumb) %>
+    </div>
+<% end %>

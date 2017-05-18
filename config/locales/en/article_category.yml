@@ -1,0 +1,15 @@
+en:
+  article_category:
+    names:
+      incyde: "Incyde News"
+      current: "Current"
+      seminars-conferences: "Seminars and conferences"
+      knowledgebase: "Knowledgebase"
+      promotions: "Promotions"
+  activerecord:
+    models:
+      article_category:
+        one: "Categoría"
+        other: "Categorías"
+    attributes:
+      article_category:

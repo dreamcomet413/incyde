@@ -1,0 +1,22 @@
+es:
+  article:
+    index_empty: "No hay contenido disponible"
+    pdf: "Abrir PDF"
+  activerecord:
+    models:
+      article:
+        one: "Contenido"
+        other: "Contenidos"
+    attributes:
+      article:
+        category: "Categoría"
+        author: "Autor"
+        title: "Título"
+        description: "Descripción"
+        body: "Cuerpo"
+        image: "Foto"
+        video_url: "Video (link Youtube)"
+        published_at: "Fecha de publicación"
+        created_at: "Fecha de creación"
+        featured: "Destacado"
+        public: "Público"

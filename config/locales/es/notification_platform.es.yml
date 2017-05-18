@@ -1,0 +1,14 @@
+es:
+  notification_platform:
+  activerecord:
+    models:
+      notification_platform:
+        one: "Notificación de plataforma"
+        other: "Notificaciones de plataforma"
+    attributes:
+      notification_platform:
+        recipient_ids: "Enviar a"
+        author: "Autor"
+        subject: "Asunto"
+        body: "Mensaje"
+        created_at: "Fecha"

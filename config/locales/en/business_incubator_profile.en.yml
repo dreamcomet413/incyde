@@ -1,0 +1,37 @@
+en:
+  business_incubator_profile:
+    kind:
+      servicios: ~
+      industrial: ~
+      coworking: ~
+      mixto: ~
+  activerecord:
+    attributes:
+      business_incubator_profile:
+        name: ~
+        country: ~
+        region: ~
+        province: ~
+        city: ~
+        address: ~
+        zip_code: ~
+        phone: ~
+        fax: ~
+        web: ~
+        facebook_url: "Facebook profile"
+        twitter_url: "Twitter profile"
+        recipient_agency: ~
+        managing_agency: ~
+        contact_name: ~
+        kind: ~
+        offices_count: ~
+        industrial_unit_count: ~
+        meeting_rooms_count: ~
+        training_rooms_count: ~
+        assembly_hall: ~
+        parking: ~
+        parking_count: ~
+        preincubation_zone: ~
+        video_surveillance: ~
+        electronic_access: ~
+        XXX: ~

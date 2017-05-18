@@ -1,0 +1,6 @@
+en:
+  country: ~
+  activerecord:
+    attributes:
+      country:
+        name: ~

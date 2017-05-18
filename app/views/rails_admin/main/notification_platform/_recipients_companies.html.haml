@@ -1,0 +1,11 @@
+- incubator_extra_class = 'recipients incubator' if defined?(for_incubator)
+%ul.companies_list{id: "companies_for_#{incubator.id}", class: incubator_extra_class}
+  %li
+    = check_box_tag 'all_companies'
+    %label{for: 'all_companies'} Seleccionar todos
+  - incubator.companies.each do |company|
+    %li.company
+      - id = "notification_platform_recipient_ids_#{company.id}"
+      - checked = form.object.recipient_ids.present? && form.object.recipient_ids.include?(company.id.to_s)
+      = check_box_tag "notification_platform[recipient_ids][]", company.id, checked, id: id
+      %label{for: id}= company.name

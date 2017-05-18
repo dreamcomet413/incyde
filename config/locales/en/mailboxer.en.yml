@@ -1,0 +1,13 @@
+en:
+  mailboxer:
+    message_page:
+      new_message: ~
+      answer: ~
+      form:
+        placeholder:
+          to: ~
+          subject: ~
+          text: ~
+    message_mailer:
+      subject_new: ~
+      subject_reply: ~

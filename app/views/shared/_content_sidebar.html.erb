@@ -1,0 +1,16 @@
+<h3 class="ui header"><%= title %></h3>
+<div class="ui relaxed items">
+  <% collection.each do |article| %>
+      <%= link_to article_path(article), class: "item" do %>
+          <div class="ui tiny image">
+            <%= image_tag(article.image.url(:thumb)) if article.image? %>
+          </div>
+          <div class="content">
+            <div class="meta">
+              <div class="date"><%= l(article.published_at.to_date) %></div>
+            </div>
+            <div class="ui small header"><%= article.title %></div>
+          </div>
+      <% end %>
+  <% end %>
+</div>

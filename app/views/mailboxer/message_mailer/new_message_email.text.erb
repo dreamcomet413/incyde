@@ -1,0 +1,11 @@
+Hola,
+
+<%= @message.sender.name %> escribió:
+
+<%= @message.body.html_safe? ? @message.body : strip_tags(@message.body) %>
+
+Responde al mensaje desde la plataforma <%= link_to Rails.configuration.action_mailer.default_url_options[:host], messages_url(anchor: dom_id(@message.conversation)) %>
+<% user = @message.recipients.find{ |p| p != @message.sender} %>
+<% if user.multi_account? %>
+    *Mensaje enviado al Vivero: <%= user.name %>
+<% end%>

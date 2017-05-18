@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="ui page grid">
+    <div class="ui equal height row">
+      <div class="main ui eleven wide column">
+        <div class="news item">
+          <%= render partial: "image_or_video", locals: {content: @article} %>
+          <%#= image_tag(@article.image.url, class: "ui fluid image") if @article.image? %>
+          <div class="content">
+            <h3 class="ui huge header"><%= @article.title %></h3>
+            <div class="meta">
+              <div class="toolbar">
+                <span class="date"><%= l(@article.published_at.to_date) %></span>
+                <span class="likes">
+                    <%= link_to((current_user.like?(@article) ? t('common.shared.unlike') : t('common.shared.like')), toggle_like_article_path(@article)) %>
+                    <%= "(#{@article.content_likes.count})" if @article.content_likes.count > 0 %>
+                </span>
+              </div>
+            </div>
+            <div class="description">
+              <p>
+                <%= raw @article.body %>
+              </p>
+            </div>
+            <% if @article.pdf? %>
+                <div class="pdf-download">
+                    <%=link_to(fa_icon('file-pdf-o', text: t('article.pdf')), @article.pdf.url, target: '_blank') %>
+                </div>
+            <% end%>
+          </div>
+        </div>
+      </div>
+      <%= render "layouts/sidebar" %>
+    </div>
+  </div>
+</div>

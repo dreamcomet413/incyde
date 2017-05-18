@@ -1,0 +1,68 @@
+<div class="dark container">
+  <div class="ui page grid">
+    <div class="ui equal height row">
+      <div class="main ui eleven wide column">
+        <div id="contacts">
+          <div class="ui segment">
+
+            <% if false # TMP-DEMO %>
+
+                        <form class="ui form">
+                          <div class="three fields">
+                            <div class="field">
+                              <div class="ui search">
+                                <div class="ui icon input">
+                                  <input type="search" placeholder="busca en Incyde" class="prompt"/><i class="search icon"></i>
+                                </div>
+                                <div class="results"></div>
+                              </div>
+                            </div>
+                            <div class="field">
+                              <div class="ui selection dropdown">
+                                <input type="hidden" name="activity"/><i class="dropdown icon"></i>
+                                <div class="default text">Actividad</div>
+                                <div class="menu">
+                                  <div data-value="" class="item">Lorem ipsum dolor</div>
+                                  <div data-value="" class="item">Sit amet</div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="field">
+                              <div class="ui selection dropdown">
+                                <input type="hidden" name="province"/><i class="dropdown icon"></i>
+                                <div class="default text">Provincia</div>
+                                <div class="menu">
+                                  <div data-value="" class="item">Madrid</div>
+                                  <div data-value="" class="item">Barcelona</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+            <% end %>
+
+            <%= simple_form_for :search, url: companies_path, method: :get, html: {class: 'js-company-search'} do |f| %>
+                <% search = params[:search] %>
+                <%= f.input :query, label: false, required: false, input_html: {value: search.try(:[], :query), placeholder: t('company.page.form.text_placeholder')} %>
+
+                <%= f.input :_sector, :url => autocomplete_sector_name_companies_path, :as => :autocomplete, :id_element => '#search_sector_value',
+                            label: false, placeholder: t('company.page.form.activity_prompt'), input_html: {value: search.try(:[], :_sector)} %>
+                <%= f.input :sector, as: :hidden, input_html: {id: 'search_sector_value', value: search.try(:[], :sector), data: {search: search.try(:[], :_sector)}} %>
+
+                <%= f.input :_province, :url => autocomplete_province_name_companies_path, :as => :autocomplete, :id_element => '#search_province_value',
+                            label: false, placeholder: t('company.page.form.province_prompt'), input_html: {value: search.try(:[], :_province)} %>
+                <%= f.input :province, as: :hidden, input_html: {id: 'search_province_value', value: search.try(:[], :province), data: {search: search.try(:[], :_province)}} %>
+
+                <%= f.button :submit, t('common.shared.search'), class: "" %>
+            <% end %>
+
+          </div>
+          <div class="ui cards">
+            <%= render partial: "company", collection: @companies %>
+          </div>
+        </div>
+      </div>
+      <%= render "layouts/sidebar" %>
+    </div>
+  </div>
+</div>

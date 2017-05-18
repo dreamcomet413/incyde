@@ -1,0 +1,31 @@
+<div id="profile" class="container">
+  <div class="ui page grid">
+    <div class="ui equal height row">
+      <div class="main ui eleven wide column">
+
+
+        <% if current_user.multi_account? %>
+            Gestión del vivero:
+            <%= select(:switch_user, :id, current_user.accounts_to_manage.collect {|account| [ account.name, switch_user_path(account.id) ] }, selected: switch_user_path(current_user.id)) %>
+        <% end %>
+
+
+        <%= simple_form_for @user, url: profile_path(@user), method: :put, html: {class:""} do |f| %>
+
+            <%= render partial: "form_company", locals:{f: f} if @user.is_a?(Company) %>
+            <%= render partial: "form_business_incubator", locals:{f: f} if @user.is_a?(BusinessIncubator) %>
+
+            <div class="ui vertical segment">
+              <%= f.button :submit, t('common.shared.send'), class: "right big right floated primary" %>
+              <!--<a href="#cancel" class="ui right big right floated button">Cancelar</a>-->
+            </div>
+
+        <% end %>
+
+        <%= render "form_multiupload"  if @user.is_a?(BusinessIncubator) %>
+
+      </div>
+      <%= render "layouts/sidebar" %>
+    </div>
+  </div>
+</div>

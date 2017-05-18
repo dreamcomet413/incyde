@@ -1,0 +1,74 @@
+<%# TODO borrar la clase temporal "active" en title y content; Poner la clase "invisible" en el formulario de respuesta, ahora invisibleXXX %>
+<%
+   messages =  conversation.messages.to_a
+   first_message = messages.shift
+   first_sender = first_message.sender
+%>
+
+
+<div id="<%= dom_id(conversation) %>" class="title">
+  <div class="ui item">
+    <div class="ui avatar image">
+      <%#= link_to_unless(conversation.last_sender.is_a?(Admin), image_tag(conversation.last_sender.avatar.url(:small),
+                            :title => conversation.last_sender.name,
+                            :alt => conversation.last_sender.name),
+                            conversation.last_sender) %>
+      <% if first_sender.present? %>
+          <%= link_to_unless(first_sender.is_a?(Admin), image_tag(first_sender.avatar.url(:thumb),
+                                :title => first_sender.name,
+                                :alt => first_sender.name),
+                             first_sender) %>
+      <% end %>
+    </div>
+    <div class="content">
+      <div class="meta">
+        <!--<div class="user-name"><%#= link_to_unless(conversation.last_sender.is_a?(Admin), truncate(conversation.last_sender.name), conversation.last_sender) %></div>-->
+        <div class="user-name"><%= link_to_if(first_sender.present? && !first_sender.is_a?(Admin), (first_sender.present? ? truncate(first_sender.name) : 'Usuario borrado'), first_sender) %></div>
+        <div class="time"><%= t('common.time.ago', :time => time_ago_in_words(conversation.updated_at)) %></div>
+        <div class="replies"><%= messages.size %><i class="ui reply icon"></i></div>
+      </div>
+      <div class="subject ui small header"><%= truncate(conversation.subject, :length => 55) %></div>
+    </div>
+  </div>
+</div>
+<div class="content">
+  <div class="body">
+    <!--<p><%#= conversation.last_message.body %></p>-->
+    <!--<p><%#= conversation.messages.first.body %></p>-->
+    <p><%= first_message.body %></p>
+    <!--<%# conversation.messages.each do |message| %>-->
+        <!--<p><%#= message.body %></p>-->
+    <!--<%# end %>-->
+  </div>
+  <% unless messages.empty? %>
+      <div class="replies ui divided list">
+        <% messages.each do |message| %>
+            <div class="item">
+              <!--<div class="content">-->
+              <div class="meta">
+                <div class="from"><%= message.sender.present? ? message.sender.name : 'Usuario borrado' %></div>
+              </div>
+              <div class="body"><%= message.body %></div>
+              <!--</div>-->
+            </div>
+        <% end %>
+      </div>
+  <% end %>
+  <a href="#answer" class="ui fluid button"><%= t('mailboxer.message_page.answer') %></a>
+  <div class="reply ui basic segment invisibleXXX">
+    <%= simple_form_for :message, url: message_path(conversation), method: :put, html: {class:""} do |f| %>
+        <%= f.input :body, as: :text, label: false, placeholder: t('mailboxer.message_page.answer'), wrapper_html: {class: "field"} %>
+        <div class="actions">
+          <%= f.button :submit, t('common.shared.send'), class: "right floated green" %>
+          <!--<a href="#send" class="ui right floated green submit button">Enviar</a>-->
+          <a href="#cancel" class="ui right floated button"><%= t('common.shared.cancel') %></a>
+        </div>
+    <% end %>
+    <!--<form class="ui form">-->
+      <!--<div class="field">-->
+        <!--<textarea placeholder="Responder"></textarea>-->
+      <!--</div>-->
+      <!--<div class="actions"><a href="#send" class="ui right floated green submit button">Enviar</a><a href="#cancel" class="ui right floated button">Cancelar</a></div>-->
+    <!--</form>-->
+  </div>
+</div>

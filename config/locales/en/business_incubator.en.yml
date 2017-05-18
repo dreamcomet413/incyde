@@ -1,0 +1,14 @@
+en:
+  business_incubator: ~
+  activerecord:
+    attributes:
+      business_incubator:
+        name: ~
+        email: ~
+        remember_me: ~
+        password: ~
+        password_confirmation: ~
+        current_password: ~
+        business_incubator_profile: ~
+        archives: ~
+        parent_account: ~

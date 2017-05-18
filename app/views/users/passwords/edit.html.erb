@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="ui page grid">
+    <div class="ui sixteen column centered row">
+      <div class="main six wide column">
+        <div class="ui vertical segment">
+          <div class="ui big header">Cambiar contraseña</div>
+          <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
+            <%= f.input :reset_password_token, as: :hidden %>
+            <%= f.full_error :reset_password_token %>
+            <div class="form-inputs">
+              <div class="field">
+                <%= f.input :password, label: "Nueva contraseña", required: true, autofocus: true %>
+              </div>
+              <div class="field">  
+                <%= f.input :password_confirmation, label: "Confirmar nueva contraseña", required: true %>
+              </div>  
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, "Cambiar mi contraseña" %>
+            </div>
+            <% end %>
+            <%= render "users/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

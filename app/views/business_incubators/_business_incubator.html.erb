@@ -1,0 +1,17 @@
+<div class="masonry-grid-item">
+  <%= link_to business_incubator_path(business_incubator), class: "incubator-item ui card" do %>
+      <% if business_incubator.avatar? %>
+        <div class="news img-container"><%= image_tag(business_incubator.avatar.url(:medium)) %></div>
+      <% end %>
+      <div class="content">
+        <h3 class="ui large header" title="<%= business_incubator.name %>"><%= business_incubator.name %></h3>
+
+        <div class="meta">
+          <div class="location"><i class="icon marker"></i><span><%= business_incubator.city.name %></span></div>
+        </div>
+        <div class="description">
+          <p title="<%= business_incubator.address %>"><%= truncate(business_incubator.address, length: 65) %></p>
+        </div>
+      </div>
+  <% end %>
+</div>

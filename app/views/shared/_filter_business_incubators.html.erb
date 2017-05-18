@@ -1,0 +1,7 @@
+<%= simple_form_for :search, url: business_incubators_path, method: :get do |f| %>
+    <label><%= t('common.home.search_form.title') %></label>
+    <div class="ui selection dropdown">
+      <%= f.input :province, as: :select, collection: Province.order("name asc"), label: false, include_blank: t('common.home.search_form.prompt'), selected: selected %>
+    </div>
+    <%= f.button :submit, t('common.home.search_form.button'), class: "" %>
+<% end %>

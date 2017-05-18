@@ -1,0 +1,6 @@
+Bienvenido a la red de viveros de la fundación Incyde
+
+Hola <%= @user.email %>, para acceder a la plataforma por
+favor haga clic en el siguiente enlace y establezca su contraseña
+
+<%= link_to("Establecer contraseña", edit_password_url(@user, reset_password_token: @token)) %>

@@ -1,0 +1,16 @@
+<div class="dark container">
+  <div class="ui page grid">
+    <div class="ui equal height row">
+      <div class="main ui eleven wide column">
+        <div class="ui center aligned segment">
+          <%= render partial: "shared/filter_business_incubators", locals: {selected: params[:search].try(:[], :province)} %>
+        </div>
+        <div id="incubators" class="ui cards masonry-grid">
+          <div class="masonry-grid-sizer"></div>
+          <%= render partial: "business_incubator", collection: @business_incubators %>
+        </div>
+      </div>
+      <%= render "layouts/sidebar" %>
+    </div>
+  </div>
+</div>

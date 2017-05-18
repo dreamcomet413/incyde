@@ -1,0 +1,15 @@
+<div class="gallery ui vertical grey segment">
+  <div class="ui centered header">
+    <!--Arrastra y suelta aquí una imagen-->
+    <%= form_for(Archive.new, url: file_uploaders_path, html: { multipart: true, class: "dropzone"}) do |f|  %>
+        <div class="fallback">
+          <%= f.file_field :upload %><br>
+          <%= f.submit "Subir archivos" %>
+        </div>
+    <% end %>
+  </div>
+  <div class="ui small images">
+    <%= render partial: "file_uploaders/index", locals: {archives: @user.archives} %>
+    <!--<a href=""><img src="img/test-img-news.png"/></a><a href=""><img src="img/test-img-news.png"/></a><a href=""><img src="img/test-img-news.png"/></a><a href=""><img src="img/test-img-news.png"/></a><a href=""><img src="img/test-img-news.png"/></a><a href=""><img src="img/test-img-news.png"/></a>-->
+  </div>
+</div>

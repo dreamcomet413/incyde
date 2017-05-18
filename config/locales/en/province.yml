@@ -1,0 +1,6 @@
+en:
+  province: ~
+  activerecord:
+    attributes:
+      province:
+        name: ~

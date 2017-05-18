@@ -1,0 +1,32 @@
+<div class="aside ui five wide column">
+  <div class="banner">
+    <%= link_to(image_tag("incyde-logo-sabadell.gif"), 'http://citagestor.bancsabadell.com/es/CitaGestorNegocios', target: '_blank') %>
+  </div>
+  <% if current_user.present? %>
+      <div class="banner">
+        <%= link_to(image_tag("incyde-logo-plataforma-negocios.png"), nessmeeting_url(current_user.email), target: '_blank') %>
+        <%= link_to(t('common.sidebar.nessmeeting_tutorial'), 'https://youtu.be/KI_ZbHq5ZEs', target: '_blank') %>
+      </div>
+  <% end %>
+
+  <%= render partial: 'shared/content_sidebar', locals: {collection: featured_promotions, title: t('common.sidebar.promotions')} unless featured_promotions.empty? %>
+
+  <%= render partial: 'shared/content_sidebar', locals: {collection: featured_news, title: t('common.sidebar.events')} unless featured_news.empty? %>
+
+  <h3 class="ui header"><%= t('common.sidebar.seminars') %></h3>
+  <div class="ui relaxed items">
+    <% next_seminars.each do |seminar| %>
+        <%= link_to(url_with_protocol(seminar.url), class: "item", target: "_blank") do %>
+          <div class="ui tiny image">
+            <%= image_tag(seminar.image.url(:thumb)) if seminar.image? %>
+          </div>
+          <div class="content">
+            <div class="meta">
+              <div class="date"><%= l(seminar.start_at, format: :short) if seminar.start_at %></div>
+            </div>
+            <div class="ui small header"><%= seminar.name %></div>
+          </div>
+        <% end %>
+    <% end %>
+  </div>
+</div>

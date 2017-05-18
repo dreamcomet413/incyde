@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="ui page grid">
+    <div class="ui sixteen column centered row">
+      <div class="main six wide column">
+        <div class="ui vertical segment">
+          <div class="ui big header">Recuperar contraseña</div>
+          <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <%#= f.error_notification %>
+            <div class="form-inputs">
+              <div class="field">
+                <%= f.input :email, required: true, autofocus: true %>
+              </div>
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, "Recibir instrucciones" %>
+            </div>
+          <% end %>
+          <%= render "users/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+es:
+  city:
+  activerecord:
+    models:
+      city:
+        one: "Ciudad"
+        other: "Ciudades"
+    attributes:
+      city:
+        name: "Nombre"
+        province: "Provincia"

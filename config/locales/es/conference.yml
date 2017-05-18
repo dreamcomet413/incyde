@@ -1,0 +1,19 @@
+es:
+  conference:
+    page:
+      empty_message: "Actualmente no se encuentra ninguna sala disponible"
+      active_from: "Activa desde"
+      active_to: "hasta"
+  activerecord:
+    models:
+      conference:
+        one: "Conferencia"
+        other: "Conferencias"
+    attributes:
+      conference:
+        author: "Autor"
+        image: "Foto"
+        name: "Nombre"
+        room: "Sala"
+        start_at: "Activa desde"
+        end_at: "hasta"

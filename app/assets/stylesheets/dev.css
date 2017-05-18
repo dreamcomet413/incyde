@@ -1,0 +1,100 @@
+/* Normalmente este estilo lo pongo sin el "form.simple_form ", es decir ".hidden{display: none;}", pero no me he atrevido ya que veo que vuestro framework "semantic" usa la clase "hidden". */
+form.simple_form .hidden{display: none;}
+
+/* Para el video incrustado en la noticia */
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    margin-bottom: 12px;
+}
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.home select#search_province{ border: none}
+body.ct-business_incubators select#search_province{ border: none}
+
+#profile .gallery .ui.images a{font-size: 15px;}
+
+.dropzone .dz-default.dz-message span{display: inherit;}
+.dropzone .dz-default.dz-message {background: none;}
+
+.ui-autocomplete {
+    position:absolute;
+}
+
+#profile .segment .item > .label{width: 50%} /* Corrige los labels del detalle de vivero */
+
+.ui.cards > .card > .content, .ui.card > .content {min-height: 160px}
+
+.aside .banner { margin-bottom: 20px;}
+.aside .banner img{ width: 100%; }
+
+/**************** Forms ******************/
+.ui.form input.boolean{ width: initial; margin-right: 5px; vertical-align: middle; }
+.legal_warning {padding: 10px; background-color: red; color: white; margin-bottom: 10px}
+
+/**************** HEADER ******************/
+
+nav {
+    background-color: #ffffff !important;
+}
+nav .item {
+    color: #888888 !important;
+    font-size: 1rem !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+}
+nav .item:hover{
+    color: #004b96 !important;
+    background-color: inherit !important;
+}
+.login-data-box {
+    text-align: right;
+    margin-top: 5px;
+    margin-bottom: -5px;
+}
+.login-data-box a:before{
+    content: "| ";
+    color: #000;
+}
+.login-data-box a.no-separator:before{
+    content: none;
+}
+
+/**************** FOOTER ******************/
+footer{
+    background: none !important;
+    color: #000 !important;
+}
+footer a{
+    color: #000 !important;
+}
+
+/* Masonry */
+.masonry-grid-sizer{display: none}
+.masonry-grid-sizer,
+.masonry-grid-item {
+    width: 50%;
+    padding: 0em 0.25em 0.5rem;
+    float: left;
+}
+/* Sobreescrito para compatibilizar con Masonry */
+#news.ui.cards .card,
+#incubators.ui.cards .card{width: 100%;}
+#news.ui.cards > .card > .content,
+#news .ui.card > .content,
+#incubators.ui.cards > .card > .content,
+#incubators .ui.card > .content {min-height: inherit}
+

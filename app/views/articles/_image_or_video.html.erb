@@ -1,0 +1,9 @@
+<% if !content.video_url.blank? %>
+    <% unless content.video_url.blank? %>
+        <div class="embed-container">
+          <%= embed_from_youtube_url(content.video_url) %>
+        </div>
+    <% end %>
+<% elsif content.has_image? %>
+    <%= image_tag(content.get_image_url, class: "ui fluid image") %>
+<% end %>

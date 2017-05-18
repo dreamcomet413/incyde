@@ -1,0 +1,11 @@
+es:
+  region:
+  activerecord:
+    models:
+      region:
+        one: "Com. Autónoma"
+        other: "Com. Autónomas"
+    attributes:
+      region:
+        name: "Nombre"
+        country: "País"

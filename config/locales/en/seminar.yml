@@ -1,0 +1,12 @@
+en:
+  seminar:
+    page:
+      empty_message: ~
+  activerecord:
+    attributes:
+      seminar:
+        image: ~
+        name: ~
+        url: ~
+        start_at: ~
+        code: ~

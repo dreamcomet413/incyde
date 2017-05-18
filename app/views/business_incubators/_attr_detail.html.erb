@@ -1,0 +1,12 @@
+<% data = object.business_incubator_profile.send(attr) %>
+<% unless data.nil? || data == "" %>
+    <div class="ui item">
+      <div class="label">
+        <i class="large icon"></i>
+        <span><%= I18n.t( attr, scope: "activerecord.attributes.business_incubator_profile", default: (field_text if defined?(field_text))) %></span>
+      </div>
+      <div class="content">
+        <div class="url"><%= print_data_for_detail(data) %></div>
+      </div>
+    </div>
+<% end %>

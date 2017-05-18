@@ -1,0 +1,7 @@
+en:
+  archive: ~
+  activerecord:
+    attributes:
+      archive:
+        user: ~
+        upload: ~

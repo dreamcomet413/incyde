@@ -1,0 +1,6 @@
+en:
+  sector: ~
+  activerecord:
+    attributes:
+      sector:
+        name: ~

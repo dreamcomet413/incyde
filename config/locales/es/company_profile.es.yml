@@ -1,0 +1,38 @@
+es:
+  company_profile:
+  activerecord:
+    models:
+      company_profile:
+        one: "Datos del Viverista"
+        other: "Perfil de Viveristas"
+    attributes:
+      company_profile:
+        company: "Email y otros datos"
+        business_incubator_profile: "Vivero"
+        business_incubator_profile_id: "Vivero"
+        sector: "Sector"
+        name: "Nombre de la empresa"
+        incorporation_date: "Fecha de constitución"
+        start_at: "Fecha de alta"
+        end_at: "Fecha de baja"
+        start_at_in_business_incubator: "Fecha de incorporación al vivero"
+        end_at_in_business_incubator: "Fecha de salida del vivero"
+        contact_name: "Nombre"
+        contact_surname: "Apellidos"
+        contact_nif: "Nif/Cif"
+        cnae: "CNAE"
+        workers_number: "Nº de trabajadores"
+        land_phone: "Teléfono"
+        mobile_phone: "Móvil"
+        fax: "Fax"
+        country: "País"
+        region: "Com. Autónoma"
+        province: "Provincia"
+        city: "Localidad"
+        address: "Dirección Social de la empresa"
+        zip_code: "Código Postal"
+        activity: "Actividad"
+        web: "Web de la empresa"
+        offer_description: "Oferta"
+        space: "Espacio"
+        legal_conditions: "Acepta las condiciones legales"

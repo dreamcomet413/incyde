@@ -1,0 +1,34 @@
+en:
+  company_profile: ~
+  activerecord:
+    attributes:
+      company_profile:
+        company: ~
+        business_incubator_profile: ~
+        business_incubator_profile_id: ~
+        sector: ~
+        name: ~
+        incorporation_date: ~
+        start_at: ~
+        end_at: ~
+        start_at_in_business_incubator: ~
+        end_at_in_business_incubator: ~
+        contact_name: ~
+        contact_surname: ~
+        contact_nif: ~
+        cnae: ~
+        workers_number: ~
+        land_phone: ~
+        mobile_phone: ~
+        fax: ~
+        country: ~
+        region: ~
+        province: ~
+        city: ~
+        address: ~
+        zip_code: ~
+        activity: ~
+        web: ~
+        offer_description: ~
+        space: ~
+        legal_conditions: ~

@@ -1,0 +1,28 @@
+<div class="dark container">
+  <div class="ui page grid">
+    <div class="ui equal height row">
+      <div class="main ui eleven wide column">
+        <div id="conferences" class="ui cards">
+          <% if @conferences.empty? %>
+            <p><%= t('conference.page.empty_message') %></p>
+          <% else %>
+              <% @conferences.each do |conference| %>
+                  <%= link_to(conference_path(conference), class: "news-item ui card", target: 'blank') do %>
+                      <!--<a href="/conference-detail.html" class="news-item ui card">-->
+                      <div class="news img-container"><%= image_tag(conference.image.url(:medium)) if conference.image? %></div>
+                      <div class="content">
+                        <h3 class="ui large header"><%= conference.name %></h3>
+                        <div class="meta">
+                          <div class="date"><%= t('conference.page.active_from') %> <span class="start-date"><%= conference.display_date(:start_at) %></span><%= t('conference.page.active_to') %> <span class="finish-date"><%= conference.display_date(:end_at)  %></span></div>
+                        </div>
+                      </div>
+                      <!--</a>-->
+                  <% end %>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+      <%= render "layouts/sidebar" %>
+    </div>
+  </div>
+</div>

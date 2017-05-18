@@ -1,0 +1,18 @@
+es:
+  business_incubator:
+  activerecord:
+    models:
+      business_incubator:
+        one: "Vivero"
+        other: "Viveros"
+    attributes:
+      business_incubator:
+        name: "Nombre"
+        email: "Email"
+        remember_me: "Recordar"
+        password: "Contraseña"
+        password_confirmation: "Confirmar contraseña"
+        current_password: "Contraseña actual"
+        business_incubator_profile: "Resto de datos"
+        archives: "Imágenes"
+        parent_account: "Gestionado por"

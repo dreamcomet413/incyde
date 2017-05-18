@@ -1,0 +1,27 @@
+<div class="primary ui vertical segment">
+  <div class="ui image avatar">
+    <%= image_tag(@user.avatar.url(:medium)) %>
+    <%= f.input :avatar %>
+  </div>
+  <div class="content">
+    <%= f.simple_fields_for @user.profile_class do |fp| %>
+        <%= fp.input :name %>
+        <%= fp.input :web %>
+    <% end %>
+  </div>
+</div>
+
+<div class="ui vertical segment">
+  <div class="ui header">Datos de contacto</div>
+  <%= f.simple_fields_for @user.profile_class do |fp| %>
+      <%= fp.input :contact_name %>
+      <%= fp.input :phone %>
+      <%= fp.input :fax %>
+      <%= fp.input :facebook_url %>
+      <%= fp.input :twitter_url %>
+      <%#= fp.input :web %>
+  <% end %>
+  <div class="ui header">Cambiar contraseña</div>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+</div>

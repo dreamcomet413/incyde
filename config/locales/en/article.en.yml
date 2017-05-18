@@ -1,0 +1,15 @@
+en:
+  article: ~
+  activerecord:
+    attributes:
+      article:
+        author: ~
+        title: ~
+        description: ~
+        body: ~
+        image: ~
+        video_url: ~
+        published_at: ~
+        created_at: ~
+        featured: ~
+        public: ~

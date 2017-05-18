@@ -1,0 +1,15 @@
+es:
+#  admin: # Ojo que esto intercede con traducciones de la admin, por ejemplo en esta pantalla http://localhost:3000/administracion/business_incubator/nestable
+  activerecord:
+    models:
+      admin:
+        one: "Administrador"
+        other: "Administradores"
+    attributes:
+      admin:
+        name: "Nombre"
+        email: "Email"
+        password: "Contraseña"
+        password_confirmation: "Confirmar contraseña"
+        created_at: "Fecha creación"
+        hide_messaging: "Ocultar en mensajería"

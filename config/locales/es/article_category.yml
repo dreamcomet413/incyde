@@ -1,0 +1,15 @@
+es:
+  article_category:
+    names:
+      incyde: "Noticias Incyde"
+      current: "Noticias"
+      seminars-conferences: "Seminarios y conferencias"
+      knowledgebase: "Base de conocimientos"
+      promotions: "Promociones"
+  activerecord:
+    models:
+      article_category:
+        one: "Categoría"
+        other: "Categorías"
+    attributes:
+      article_category:

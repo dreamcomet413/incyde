@@ -1,0 +1,14 @@
+es:
+  mailboxer:
+    message_page:
+      new_message: "Nuevo mensaje"
+      answer: "Responder"
+      form:
+        placeholder:
+          to: "Para"
+          subject: "Asunto"
+          text: "Escribe un mensaje"
+
+    message_mailer:
+      subject_new: "[Incyde] Tienes un mensaje: %{subject}"
+      subject_reply: "[Incyde] Respuesta al mensaje: %{subject}"
