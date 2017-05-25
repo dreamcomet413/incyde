@@ -1,9 +1,5 @@
 == README
 
-En local ejecutar "mailcatcher" en el directorio del proyecto para arrancar el visor de email.
-Para ver los emails acceder a: http://localhost:1080/
-
-
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
