@@ -1,10 +1,17 @@
 # config valid only for current version of Capistrano
-lock '3.3.5'
+# lock '3.3.5'
+lock '3.8.1'
+
 
 set :application, 'incyde'
 #set :repo_url, 'git@example.com:me/my_repo.git'
-set :repo_url, 'git@bitbucket.org:leaniman/incyde.git'
+set :repo_url, 'https://cto_varun@bitbucket.org/cto_varun/incyde.git'
 #set :repo_url, 'https://leaniman@bitbucket.org/leaniman/incyde.git'
+
+set :deploy_to, '/home/deploy/incyde'
+
+append :linked_files, "config/database.yml", "config/secrets.yml"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
