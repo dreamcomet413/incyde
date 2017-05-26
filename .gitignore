@@ -14,3 +14,4 @@
 /tmp
 /.idea/
 /incyde-back.esproj/
+config/database.yml\nconfig/secrets.yml
