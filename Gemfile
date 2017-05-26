@@ -69,4 +69,11 @@ gem "rspec-rails",        group: :test
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+group :development do 
+	gem 'capistrano', '~> 3.8', '>= 3.8.1'
+	gem 'capistrano-rails', '~> 1.2', '>= 1.2.3'
+	gem 'capistrano-passenger', '~> 0.2.0'
 
+	# Add this if you're using rbenv
+	gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.1'
+end
