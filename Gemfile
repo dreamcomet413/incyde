@@ -36,7 +36,7 @@ group :development do
     gem 'capistrano3-puma',   require: false
 end
 
-group :development do 
+group :development do
   gem 'spring'
   gem 'quiet_assets'
   gem 'mailcatcher'

@@ -1,74 +1,109 @@
-# config valid only for current version of Capistrano
-# lock '3.3.5'
-lock '3.8.1'
+server '85.214.55.87', port: 22, roles: [:web, :app, :db], primary: true
 
+set :scm,             :git
+set :repo_url,        'git@github.com:pracdev/incyde.git'
+set :application,     'incyde'
+set :user,            'deploy'
+set :puma_threads,    [4, 16]
+set :puma_workers,    0
 
-set :application, 'incyde'
-#set :repo_url, 'git@example.com:me/my_repo.git'
-set :repo_url, 'https://github.com/vanurox/incyde.git'
-#set :repo_url, 'https://leaniman@bitbucket.org/leaniman/incyde.git'
+# Don't change these unless you know what you're doing
+set :pty,             true
+set :use_sudo,        false
+set :stage,           :production
+set :deploy_via,      :remote_cache
+set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
+set :puma_bind,       "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
+set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
+set :puma_pid,        "#{shared_path}/tmp/pids/puma.pid"
+set :puma_access_log, "#{release_path}/log/puma.error.log"
+set :puma_error_log,  "#{release_path}/log/puma.access.log"
+set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
+set :puma_preload_app, true
+set :puma_worker_timeout, nil
+set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 
-set :deploy_to, '/home/deploy/incyde'
-
-append :linked_files, "config/database.yml", "config/secrets.yml"
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
-
-# Default branch is :master
-# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
-#set :branch, "develop"
-
-# Default deploy_to directory is /var/www/my_app_name
-#set :deploy_to, "/var/www/#{application}"
-set :deploy_to, "/home/deploy/incyde"
-
-# Default value for :scm is :git
-# set :scm, :git
-
-# Default value for :format is :pretty
-# set :format, :pretty
-
-# Default value for :log_level is :debug
-# set :log_level, :debug
-
-# Default value for :pty is false
-# set :pty, true
-
-# Default value for :linked_files is []
-set :linked_files, fetch(:linked_files, []).push('config/database.yml')
-
-# Default value for linked_dirs is []
-# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/assets', 'public/system', 'public/uploads')
-set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public')
-
-# Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
-
-# Default value for keep_releases is 5
+## Defaults:
+# set :branch,        :master
+# set :format,        :pretty
+# set :log_level,     :debug
 # set :keep_releases, 5
 
-set :passenger_roles, :app                  # this is default
-set :passenger_restart_runner, :sequence    # this is default
-set :passenger_restart_wait, 5              # this is default
-set :passenger_restart_limit, 2             # this is default
+## Linked Files & Directories (Default None):
+set :linked_files, %w{config/application.yml config/database.yml}
+set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+# set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
-#set :rvm_type, :user                     # Defaults to: :auto
-#set :rvm_ruby_version, 'ruby-2.1.1'      # Defaults to: 'default'
+# Bonus! Colors are pretty!
+def red(str)
+  "\e[31m#{str}\e[0m"
+end
 
+# Figure out the name of the current local branch
+def current_git_branch
+  branch = `git symbolic-ref HEAD 2> /dev/null`.strip.gsub(/^refs\/heads\//, '')
+  puts "Deploying branch #{red branch}"
+  branch
+end
 
-namespace :deploy do
+# Set the deploy branch to the current branch
+set :branch, current_git_branch
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+namespace :puma do
+  desc 'Create Directories for Puma Pids and Socket'
+  task :make_dirs do
+    on roles(:app) do
+      execute "mkdir #{shared_path}/tmp/sockets -p"
+      execute "mkdir #{shared_path}/tmp/pids -p"
     end
-
-    on roles(fetch(:passenger_roles)), in: fetch(:passenger_restart_runner), wait: fetch(:passenger_restart_wait), limit: fetch(:passenger_restart_limit) do
-      execute :touch, release_path.join('tmp/restart.txt')
-    end
-
   end
 
+  before :start, :make_dirs
 end
+
+namespace :assets do
+  desc "compile assets locally and upload before finalize_update"
+  task :deploy do
+      %x[bundle exec rake assets:clean && bundle exec rake assets:precompile]
+      ENV['COMMAND'] = " mkdir '#{release_path}/public/assets'"
+      invoke
+      upload '/#{app_dir}/public/assets', "#{release_path}/public/assets", {:recursive => true}
+  end
+end
+
+namespace :deploy do
+  desc "Make sure local git is in sync with remote."
+  task :check_revision do
+    on roles(:app) do
+      #unless `git rev-parse HEAD` == `git rev-parse origin/master`
+      #  puts "WARNING: HEAD is not the same as origin/master"
+      #  puts "Run `git push` to sync changes."
+      #  exit
+      #end
+    end
+  end
+
+  desc 'Initial Deploy'
+  task :initial do
+    on roles(:app) do
+      before 'deploy:restart', 'puma:start'
+      invoke 'deploy'
+    end
+  end
+
+  # desc 'Restart application'
+  # task :restart do
+  #   on roles(:app), in: :sequence, wait: 5 do
+  #     invoke 'puma:restart'
+  #   end
+  # end
+
+  before :starting,     :check_revision
+  after  :finishing,    :compile_assets
+  after  :finishing,    :cleanup
+  after  :finishing,    :restart
+end
+
+# ps aux | grep puma    # Get puma pid
+# kill -s SIGUSR2 pid   # Restart puma
+# kill -s SIGTERM pid   # Stop puma

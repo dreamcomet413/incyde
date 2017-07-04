@@ -362,6 +362,3 @@ DEPENDENCIES
   web_translate_it
   whenever
   wysiwyg-rails (~> 1.2.7)
-
-BUNDLED WITH
-   1.15.1
