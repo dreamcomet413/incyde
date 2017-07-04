@@ -26,6 +26,15 @@ gem 'rails_admin_nestable', '~> 0.3.2'
 gem "wysiwyg-rails", "~> 1.2.7"
 gem 'whenever', :require => false
 gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'puma'
+
+group :development do
+    gem 'capistrano',         require: false
+    gem 'capistrano-rvm',     require: false
+    gem 'capistrano-rails',   require: false
+    gem 'capistrano-bundler', require: false
+    gem 'capistrano3-puma',   require: false
+end
 
 group :development do 
   gem 'spring'
